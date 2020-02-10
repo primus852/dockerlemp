@@ -11,6 +11,8 @@ services:
       - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
     ports:
       - "3306:3306"
+    command:
+      'mysqld --innodb-flush-method=fsync'
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./database/data:/var/lib/mysql
